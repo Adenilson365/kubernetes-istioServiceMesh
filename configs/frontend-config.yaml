@@ -2,5 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: frontend-config
+  namespace: api-prd
 data:
   API_URL: "https://api.konzelmann.com.br"
+  #API_URL: "http://catalogo.api-prd.svc.cluster.local:3333"

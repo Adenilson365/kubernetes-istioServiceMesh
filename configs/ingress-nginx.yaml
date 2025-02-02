@@ -2,11 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: devopslabs
+  namespace: api-prd
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/service-upstream: "true"
    # networking.gke.io/managed-certificates: auto-cert2
-    
+
 spec:
   ingressClassName: nginx
   tls:
@@ -28,7 +29,7 @@ spec:
           pathType: ImplementationSpecific
           backend:
             service:
-              name: catalogo
+              name: api-catalogo
               port:
                 number: 3333
         - path: /get-image
@@ -38,11 +39,3 @@ spec:
               name: api-images
               port:
                 number: 5001
----
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: managed-cert
-spec:
-  domains:
-    - api.konzelmann.com.br

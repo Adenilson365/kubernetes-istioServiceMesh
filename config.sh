@@ -16,11 +16,11 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 #Aplicando configurações iniciais
 
-kubectl apply -f namespace.yaml
+kubectl apply -f ./configs/namespace.yaml
 
-kubectl apply -f istio-gke-config.yaml
+kubectl apply -f ./configs/istio-gke-config.yaml
 
-kubectl apply -f .
+kubectl apply -f ./configs/
 
 #Installing istio-base
 helm install istio-base istio/base -n istio-system --wait
@@ -38,10 +38,10 @@ helm install ztunnel istio/ztunnel -n istio-system --wait
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.24/samples/addons/kiali.yaml
 
 #Install grafana
-#kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.24/samples/addons/grafana.yaml
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.24/samples/addons/grafana.yaml
 
 #Install prometheus
-#kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.24/samples/addons/prometheus.yaml
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.24/samples/addons/prometheus.yaml
 
 #Install stack prometheus-grafana
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -49,7 +49,7 @@ helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack --version 67.5.0 --namespace obs -f ./obs/prom-values.yaml --wait
 
 #Criar cluster issuer
-kubectl apply -f cluster-issuer.yaml
+kubectl apply -f ./configs/cluster-issuer.yaml
 
 #Implantar aplicação
 kubectl apply -f ./deploys/

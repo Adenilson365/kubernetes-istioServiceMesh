@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: ext-psql-db
+spec:
+  hosts:
+  - psql.external
+  ports:
+  - number: 5432
+    name: psql 
+    protocol: TCP
+  location: MESH_EXTERNAL
+  resolution: STATIC 
+  endpoints:
+  - address: 35.231.209.70
+    ports:
+      psql: 5432

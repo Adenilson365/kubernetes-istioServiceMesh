@@ -7,3 +7,9 @@ prometheus:
       limits:
         memory: 1Gi
         cpu: 2000m
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 20Gi

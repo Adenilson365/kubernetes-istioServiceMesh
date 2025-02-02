@@ -22,3 +22,9 @@ kind: Namespace
 metadata:
   name: obs 
 ---
+apiVersion: v1 
+kind: Namespace 
+metadata: 
+  name: api-prd 
+  labels: 
+    istio-injection: enabled

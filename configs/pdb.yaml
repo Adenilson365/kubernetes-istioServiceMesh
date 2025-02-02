@@ -2,6 +2,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: pdb
+  namespace: api-prd
 spec:
   minAvailable: 1
   selector:
@@ -12,6 +13,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: pdb-zero
+  namespace: api-prd
 spec:
   minAvailable: 0
   selector:

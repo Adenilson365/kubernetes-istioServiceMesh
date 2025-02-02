@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istio-mesh-monitor
+  namespace: istio-system
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      istio-metrics: "true"
+  namespaceSelector:
+    matchNames:
+    - api-prd
+  endpoints:
+  - port: http-metrics
+    path: /stats/prometheus
+    honorLabels: true
