@@ -1,4 +1,4 @@
-
+### Etapa atual do projeto: Concluido/melhoria
 
 ### Objetivos
  - Implantação GKE ou Local com ShellScript ou Pipeline CloudBuild
@@ -6,7 +6,6 @@
  - Aplicar Istio para Service Mesh.
  - Aplicar Prometheus e Grafana para observabilidade
  - Infraestrutura GKE com Terraform usando modulos.
-
 
 ### Repositórios relacionados 
 - [Frontend](https://github.com/Adenilson365/devopslabs01-frontend)
@@ -28,6 +27,11 @@
 - [Istio - Service Mesh](https://istio.io/)
 - [Stack Prometheus + Grafana](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack)
 
+### Instalar:
+- execute as configurações abaixo, depois execute o script config.sh
+  - Pode ser usado tanto local como GKE
+
+
 ### Configuração inícial do Cluster
 - Execute o terraform ou crie um cluster GKE [Repositório de IAC](https://github.com/Adenilson365/devopslabs01-iac)
 - Instale a CNI ingress-nginx
@@ -37,7 +41,6 @@
   - ConfigMaps
   - Ingress Controller
   - PersistentVolumeClaim
-### É possível realizar a instalação executando o script ./config.sh
 
 ### Como Configurar HTTPS
 - Instale o cert-manager seguindo a documentação cert-manager.
@@ -59,7 +62,7 @@ spec:
 ```
 - Pronto - HTTPS configurado.
 
-### Intalar Istio
+### Instalar Istio
 - [LINK](https://istio.io/latest/docs/ambient/install/platform-prerequisites/) - Aplique a configuração específica para o Kubernetes, neste projeto GKE.
 - [LINK](https://istio.io/latest/docs/ambient/install/helm/) - Instale os componentes base do Istio via Helm
 - [LINK](https://istio.io/latest/docs/ops/integrations/kiali/#installation) - Instale o Kiali Dashboard
@@ -109,14 +112,9 @@ data:
   PGDATA: "/var/lib/postgresql/data/db"
 ---
 
-
 ```
 ```shell
-#Como colocar em base64 para o secret
+#Como colocar em base64 se você usar linux para o secret
 echo -d 'valor' | base64 
 ```
-
-
-### Scripts úteis
-
-- Criar e popular tabela no banco de dados.
+- Para codificar em base64 [link](https://www.base64decode.org/)
